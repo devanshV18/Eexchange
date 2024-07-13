@@ -1,6 +1,7 @@
 import express from "express"
 //we can import this gePyloadclient function anywhere to get data base access
 import { getPayloadClient } from "./get-payload"
+import { nextHandler, nextApp } from "./next-utils"
 
 const app = express()
 const PORT = Number(process.env.PORT) || 3000
@@ -13,6 +14,16 @@ const start = async () => {
                 cms.logger.info(`Admin URL ${cms.getAdminURL()}`)
             }
         }
+    })
+
+    app.use((req,res) => nextHandler(req,res))
+
+    nextApp.prepare().then(() => {
+        payload.logger.info('Next js Started')
+
+        app.listen(PORT, async () => {
+            payload.logger.info(`Next.js App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`)
+        })
     })
 }
 
