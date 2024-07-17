@@ -14,6 +14,11 @@ export interface Config {
   };
   globals: {};
 }
+
+/**
+ * Remove or rename the duplicate `GeneratedTypes` interface definition.
+ */
+
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
@@ -32,6 +37,7 @@ export interface User {
   lockUntil?: string | null;
   password: string | null;
 }
+
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
@@ -55,6 +61,7 @@ export interface PayloadPreference {
   updatedAt: string;
   createdAt: string;
 }
+
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations".
@@ -67,7 +74,3 @@ export interface PayloadMigration {
   createdAt: string;
 }
 
-
-declare module 'payload' {
-  export interface GeneratedTypes extends Config {}
-}
