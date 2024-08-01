@@ -10,6 +10,7 @@ import {useForm} from "react-hook-form"
 import {zodResolver} from "@hookform/resolvers/zod"
 import { AuthCredentialValidatior, TAuthCredentialsValidator } from "@/lib/validators/account-credentials-validators"
 import { trpc } from "@/trpc/client"
+import {toast} from 'sonner'
 
 const Page = () => {
 
@@ -22,7 +23,13 @@ const Page = () => {
         })
 
         const {mutate, isPending} = trpc.auth.createPayloadUser.useMutation({
-
+            onError: (err) => {
+                if(err.data?.code === "CONFLICT"){
+                    toast.error(
+                        'The email already exist, please Login using this email!'
+                    )
+                }
+            }
         })
 
 
