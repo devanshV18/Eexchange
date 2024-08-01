@@ -15,7 +15,7 @@ const VerifyEmail = ({token}: VerifyEmailProps) => {
         token
     })
 
-    if(false){
+    if(isError){
         return (
             <div className="flex flex-col items-center gap-2">
                 <XCircle className='h-8 w-8 text-red-600'/>
@@ -28,7 +28,7 @@ const VerifyEmail = ({token}: VerifyEmailProps) => {
         )
     }
 
-    if(false){
+    if(data?.success){
         return(
             <div className="flex h-full flex-col items-center justify-center">
                 <div className="relative mb-4 h-60 w-60 text-muted-foreground">
@@ -51,7 +51,7 @@ const VerifyEmail = ({token}: VerifyEmailProps) => {
         )
     }
 
-    if(true){
+    if(isLoading){
         return(
             <div className="flex flex-col items-center gap-2">
                 <Loader2 className='animate-spin h-8 w-8 text-blue-600'/>
