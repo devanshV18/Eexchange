@@ -41,8 +41,8 @@ const Page = () => {
 
         const {mutate: signIn, isPending} = trpc.auth.signIn.useMutation({
             onSuccess: () => {
+                
                 toast.success('Signed in Successfully')
-
                 router.refresh()
 
                 if(origin){

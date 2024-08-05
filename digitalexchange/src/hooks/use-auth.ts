@@ -21,9 +21,12 @@ export const useAuth = () => {
         toast.success("Signed out successfully")
 
         router.push('/sign-in')
+        router.refresh()
 
         } catch (error) {
             toast.error("COuldn't sign out, Please Try Again")
         }
     }
+
+    return {signOut}
 }

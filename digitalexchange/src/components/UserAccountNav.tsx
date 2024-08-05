@@ -5,9 +5,13 @@ import { Button } from "./ui/button"
 import { DropdownMenuContent } from "./ui/dropdown-menu"
 import { User } from "@/payload/payload-types"
 import Link from "next/link"
+import { useAuth } from "@/hooks/use-auth"
 
 
 const UserAccountNav = ({user} : {user: User}) => {
+
+    const {signOut} = useAuth()
+
     return <DropdownMenu>
         <DropdownMenuTrigger asChild className="overflow-visible">
             <Button variant='ghost' size='sm' className='relative'>My Account</Button>
@@ -31,7 +35,7 @@ const UserAccountNav = ({user} : {user: User}) => {
             </div>
 
 
-            <div className="hover:bg-gray-200">
+            <div className="hover:bg-gray-200" onClick={signOut}>
                 <DropdownMenuItem className="cursor-pointer ml-2">
                     Log Out
                 </DropdownMenuItem>
